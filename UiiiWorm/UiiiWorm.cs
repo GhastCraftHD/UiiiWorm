@@ -14,7 +14,7 @@ namespace UiiiWorm
     {
         private const String modGUID = "GhastCraftHD.UiiiWorm";
         private const String modName = "UiiiWorm";
-        private const String modVersion = "1.0.0";
+        private const String modVersion = "1.1.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -22,7 +22,7 @@ namespace UiiiWorm
 
         internal ManualLogSource mls;
 
-        internal static List<AudioClip> SoundFX;
+        internal static AudioClip[] SoundFX;
         internal static AssetBundle bundle;
 
         private void Awake()
@@ -36,15 +36,13 @@ namespace UiiiWorm
             
             mls.LogInfo("UiiiWorm was enabled");
 
-            SoundFX = new List<AudioClip>();
-
             String folderPath = instance.Info.Location;
             folderPath = folderPath.TrimEnd("UiiiWorm.dll".ToCharArray());
             bundle = AssetBundle.LoadFromFile(folderPath + "uiiiworm");
             if (bundle != null)
             {
                 mls.LogInfo("Loaded asset bundle successfully");
-                SoundFX = bundle.LoadAllAssets<AudioClip>().ToList();
+                SoundFX = bundle.LoadAllAssets<AudioClip>();
             }
             else
             {

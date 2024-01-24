@@ -9,7 +9,7 @@ namespace UiiiWorm.Patches
         [HarmonyPostfix]
         static void OverrideAudio(SandWormAI __instance)
         {
-            __instance.emergeFromGroundSFX = UiiiWorm.SoundFX[0];
+            __instance.roarSFX = UiiiWorm.SoundFX;
         }    
     }
 }
